@@ -1,0 +1,5 @@
+Django
+djangorestframework
+pika
+psycopg2-binary==2.9.9
+django-prometheus

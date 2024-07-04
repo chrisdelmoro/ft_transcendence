@@ -1,0 +1,41 @@
+global: # configuracao global
+  scrape_interval: 15s # intervalo de tempo entre uma coleta de metrica e outra
+  scrape_timeout: 10s  # tempo maximo para coletar metricas
+
+scrape_configs: # configuracao de coleta de metricas
+  - job_name: prometheus
+    metrics_path: /prometheus/metrics
+    static_configs:
+      - targets:
+        - prometheus:9090
+
+  - job_name: gateway
+    static_configs:
+      - targets:
+        - gateway:8000
+
+  - job_name: auth-service
+    static_configs:
+      - targets:
+        - auth-service:8000
+
+  - job_name: game-service
+    static_configs:
+      - targets:
+          - game-service:8000
+
+  - job_name: tournament-service
+    static_configs:
+      - targets:
+        - tournament-service:8000
+
+  - job_name: user-service
+    static_configs:
+      - targets:
+        - user-service:8000
+
+  - job_name: stats-service
+    static_configs:
+      - targets:
+        - stats-service:8000
+

@@ -1,0 +1,238 @@
+services:
+  stats_service:
+    container_name: stats-service
+    build:
+      context: ./backend/stats_service
+    volumes:
+      - ./backend/stats_service:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - rabbitmq
+      - gateway
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  user_service:
+    container_name: user-service
+    build:
+      context: ./backend/user_service
+    volumes:
+      - ./backend/user_service:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - rabbitmq
+      - gateway
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  auth_service:
+    container_name: auth-service
+    build:
+      context: ./backend/auth_service
+    volumes:
+      - ./backend/auth_service:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - rabbitmq
+      - gateway
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  game_service:
+    container_name: game-service
+    build:
+      context: ./backend/game_service
+    volumes:
+      - ./backend/game_service:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - rabbitmq
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  tournament_service:
+    container_name: tournament-service
+    build:
+      context: ./backend/tournament_service
+    volumes:
+      - ./backend/tournament_service:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - rabbitmq
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  gateway:
+    container_name: gateway
+    build:
+      context: ./backend/gateway
+    volumes:
+      - ./backend/gateway:/usr/src/app/
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - frontend
+    networks:
+      - microservices
+      - transcendence
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./elk_stack/logs/nginx_logs:/var/log/nginx
+    ports:
+      - 443:443
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - postgres
+    networks:
+      - microservices
+      - transcendence
+
+  postgres:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - ./postgres/.env
+    networks:
+      - microservices
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    env_file:
+      - ./elk_stack/.env
+    expose:
+      - "9200"
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+      - ./elk_stack/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    networks:
+      - transcendence
+
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:7.10.0
+    volumes:
+      - ./elk_stack/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./elk_stack/logs/nginx_logs:/var/log/nginx
+    env_file:
+      - ./elk_stack/.env
+    expose:
+      - "5000"
+    depends_on:
+      - elasticsearch
+    networks:
+      - transcendence
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.10.0
+    expose:
+      - "5601"
+    env_file:
+      - ./elk_stack/.env
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./elk_stack/kibana/kibana_index_pattern.ndjson:/usr/share/kibana/config/kibana_index_pattern.ndjson
+      - ./elk_stack/kibana/kibana-setup.sh:/usr/local/bin/kibana-setup.sh
+      - ./elk_stack/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - transcendence
+    entrypoint:
+      [
+        "/bin/bash",
+        "/usr/local/bin/kibana-setup.sh"
+      ]
+
+  prometheus:
+    image: prom/prometheus:v2.47.2
+    container_name: prometheus
+    expose:
+      - "9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.external-url=http://prometheus:9090/prometheus'
+      - '--web.route-prefix=/prometheus'
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    networks:
+      - transcendence
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    expose:
+      - "3000"
+    env_file:
+      - ./grafana/.env
+    networks:
+      - transcendence
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+      - ./grafana/provisioning/datasources/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./grafana/provisioning/alerting/alerting.yml:/etc/grafana/provisioning/alerting/alerting.yml
+
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: rabbitmq
+    expose:
+      - "5672"
+      - "15672"
+    env_file:
+      - rabbitmq/.env
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - microservices
+      - transcendence
+
+volumes:
+  postgres-data: {}
+  prometheus-data: {}
+  grafana-data: {}
+  elastic-data: {}
+
+networks:
+  transcendence:
+    driver: bridge
+  microservices:
+    driver: bridge

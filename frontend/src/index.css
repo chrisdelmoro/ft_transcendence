@@ -1,0 +1,34 @@
+
+@import "./pages/Login/index.css";
+@import "./pages/PongGame/index.css";
+@import "./pages/SingUp/index.css";
+@import "./pages/Home/index.css";
+@import "./pages/VsAI/index.css";
+@import "./pages/ProfilePage/index.css";
+@import "./pages/Loading/index.css";
+@import "./pages/Tournament/index.css";
+@import "./pages/VsAI/index.css";
+
+* {
+  font-family: "Press Start 2P", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+html, body {
+  background: #000;
+}
+
+h1, h2, h3, h4, h5, h6, p , a, span{
+  color: #00e5ff;
+  text-shadow: 0 0 10px #00e5ff;
+}

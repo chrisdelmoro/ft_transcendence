@@ -1,0 +1,12 @@
+@import "../../components/topBar/topBar.css";
+@import "../../components/mainPage/index.css";
+@import "../../components/themeSelector/index.css";
+
+#Content_home {
+  flex: 1;
+  padding-top: 60px; /* Space for the fixed navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -1,0 +1,47 @@
+.custom-button {
+	width: 100%;
+	padding: 15px;
+	border: 2px solid #00ffea;
+	background: linear-gradient(45deg, #00e5ff, #00ffea);
+	color: #000;
+	font-size: 18px;
+	cursor: pointer;
+	margin-bottom: 15px;
+	transition: all 0.3s ease;
+	border-radius: 5px;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 0 10px #00e5ff;
+}
+
+.custom-button:hover {
+	background: #00e5ff;
+	color: #000;
+	transform: scale(1.05);
+}
+
+.custom-button:active {
+	transform: scale(0.98);
+}
+
+.google-login {
+	background: linear-gradient(45deg, #4285f4, #34a853);
+	border: 2px solid #4285f4;
+	color: #fff;
+}
+
+.a42-login {
+	background: linear-gradient(45deg, #000, #333);
+	border: 2px solid #000;
+	color: #fff;
+}
+
+.google-login:hover,
+.a42-login:hover {
+	transform: scale(1.05);
+}
+
+.google-login:active,
+.a42-login:active {
+	transform: scale(0.98);
+}

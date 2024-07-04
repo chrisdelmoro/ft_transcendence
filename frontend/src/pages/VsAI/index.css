@@ -1,0 +1,53 @@
+@import "../../components/mainVsAI/index.css";
+.page_final {
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  vertical-align: middle;
+  width: 100%;
+}
+.container-player {
+  padding: 30px;
+}
+
+.player-picture {
+  width: 50%;
+  
+  max-width: 200px;
+  
+  border-radius: 50%;
+  border: #00e5ff;
+}
+
+.container-my-vsai {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.container-my-vsai-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.card {
+  background-color: transparent;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  margin: 20px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+.card-header {
+  background-color: transparent;
+  border-bottom: 2px solid #00ffff;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}

@@ -1,0 +1,39 @@
+.pong-animation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 0;
+}
+
+.pong-paddle {
+	width: 15px;
+	height: 100px;
+	background: #00ffea;
+	position: absolute;
+	border-radius: 10px;
+	box-shadow: 0 0 10px #00ffea;
+	animation: pong-paddle-move 2s infinite alternate;
+}
+
+.pong-paddle-left {
+	left: 30px;
+	top: calc(50% - 50px);
+}
+
+.pong-paddle-right {
+	right: 30px;
+	top: calc(50% - 50px);
+}
+
+@keyframes pong-paddle-move {
+	0% {
+		top: calc(50% - 50px);
+	}
+
+	100% {
+		top: calc(50% + 50px);
+	}
+}

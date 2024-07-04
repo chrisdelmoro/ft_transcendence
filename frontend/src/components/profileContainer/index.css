@@ -1,0 +1,139 @@
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+    max-width: 120px;
+}
+
+.c-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 700px;
+    margin-top: 20px;
+    padding: 30px;
+}
+.profile-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none; /* Initially hidden */
+    border-radius: 50%;
+}
+
+.profile-overlay i {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+.stats-fields h5{ 
+    line-height: 1;
+}
+.stats-fields p{
+    line-height: 0.5;
+}
+
+.toggle-container {
+    display: flex;
+    margin:  10px 0;
+    align-items: center;
+}
+
+.toggle-checkbox {
+    display: none;
+}
+
+.toggle-label {
+    width: 40px;
+    height: 20px;
+    background-color: #00ffff;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.toggle-label::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-checkbox:checked + .toggle-label::before {
+    transform: translateX(20px);
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 300px;
+    margin: 15px auto;
+    width: 300px;
+}
+
+.qr-code {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    border: white 3px solid;
+    
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.victory {
+    background-color: #008b3590;
+    border: #00ffff 1px solid;
+}
+
+.losses {
+    background-color: #a400009f;
+    border: #00ffff 1px solid;
+}
+.list-group-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.game-details {
+    width: 100%;
+    text-align: center;
+}
+
+.players {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.date {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.score {
+    font-size: 16px;
+    margin-bottom: 0px;
+}

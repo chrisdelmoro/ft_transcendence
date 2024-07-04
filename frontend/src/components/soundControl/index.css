@@ -1,0 +1,12 @@
+.sound-icon {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.sound-icon img {
+	width: 35px;
+	height: 35px;
+}

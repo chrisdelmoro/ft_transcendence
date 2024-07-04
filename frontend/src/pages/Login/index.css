@@ -1,0 +1,45 @@
+@import "../../components/backgroundAnimation/backgroundAnimation.css";
+@import "../../components/soundControl/index.css";
+@import "../../components/containers/index.css";
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+#login-form-container {
+  margin-bottom: 30px;
+}
+
+.login-container {
+  align-items: center;
+  margin:  20px auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+
+.register-link {
+  margin-top: 15px;
+}
+.register-link {
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  color: #00ffea;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #00ffea;
+  transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+  color: #00e5ff;
+  border-bottom: 2px solid #00e5ff;
+}

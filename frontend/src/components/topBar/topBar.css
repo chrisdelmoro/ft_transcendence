@@ -1,0 +1,93 @@
+/* Custom CSS for top bar */
+.navbar-custom {
+    background-color: #000;
+    border-bottom: 1px solid #0ff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand, .nav-link, .navbar-text {
+    color: #0ff !important;
+    font-size: 1.5rem; /* Adjust the font size */
+    display: flex;
+    align-items: center;
+}
+.profile-pic {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.friends-icon {
+    font-size: 24px; /* Adjust the size as needed */
+    color: #0ff; /* Color of the icon */
+    margin-left: 20px;
+    cursor: pointer;
+}
+.navbar-nav {
+    flex-direction: row;
+    align-items: center;
+}
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 20px;
+}
+.dropdown-menu {
+    min-width: 300px;
+    background-color: #000;
+    border: 1px solid #0ff;
+}
+.dropdown-item {
+    color: #0ff !important;
+}
+.dropdown-item:hover {
+    background-color: #0ff;
+    color: #000 !important;
+}
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+.status-online {
+    background-color: #0f0; /* Green for online */
+}
+.status-offline {
+    background-color: #f00; /* Red for offline */
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-online {
+    background-color: green;
+}
+
+.status-offline {
+    background-color: red;
+}
+
+.friend-username {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.accept-btn, .reject-btn {
+    padding: 2px 5px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

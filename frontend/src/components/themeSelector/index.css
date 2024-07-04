@@ -1,0 +1,58 @@
+@import "../popup/index.css";
+.theme-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00ffea;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme.selected {
+    background-color: #282828;
+    box-shadow: 0 0 10px #00ffea;
+    border: 2px solid #00ffea;
+}
+
+.theme.customize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.color-picker div {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.color-picker {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.color-picker .selected{
+    border-color: #282828;
+    box-shadow: 0 0 10px #00ffea;
+}
+
+.message {
+    margin: 10px 0;
+}
