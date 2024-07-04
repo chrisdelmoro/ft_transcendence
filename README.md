@@ -37,6 +37,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -124,7 +125,7 @@ Docker will make sure to setup the entire project for you. Just leave it to do i
 
 1. Run the Makefile command to clear everything up with:
 ```sh
-make fclean
+make clean
 ```
 
 
@@ -149,6 +150,10 @@ At the main menu, you can interact with it in several ways:
     * **Challenge Mode:** Here you can play a single game against a human opponent. Your opponent has to have an account and log in to the game to play against you. The results of this match will be stored in the match history on both your profiles.
     * **Tournament Mode:** Here you can play tournaments with up to eight players! There is a minimum of three participants, and all must have accounts. As above, the results will be stored in the match history on the respective players' profiles.
 
+Accessing ```https://localhost/kibana/```, you will be taken to the dashboard of our ELK stack that automatically logs any event from our system, allowing us to analyze the data logged. To access the dashboard, use ```elastic``` as the user and ```admin42``` as the password.
+
+Accessing ```https://localhost/grafana/```, you will be taken to the dashboard of our Grafana instance, which allows us to monitor our microservices running, set up alerts, and in general, keep an eye on how the system is performing. To access the dashboard, use ```admin42``` as the user and ```admin42``` as the password.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -168,6 +173,18 @@ Christian C. Del Moro - christian.delmoro@protonmail.com
 Project Link: [https://github.com/chrisdelmoro/ft_transcendence](https://github.com/chrisdelmoro/ft_transcendence)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [Luiz Lima Cezario](https://github.com/luizlcezario)
+* [Milena Carecho](https://github.com/m-carecho)
+* [Rafael Nascimento Ruban dos Santos](https://github.com/RafaelNRS)
+* [Vanderson Antonietti](https://github.com/VanAntonietti)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
